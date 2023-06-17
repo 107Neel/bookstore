@@ -3,10 +3,10 @@ import {
     ALL_USER_LOAD_REQUEST,
     ALL_USER_LOAD_RESET,
     ALL_USER_LOAD_SUCCESS,
-    USER_APPLY_JOB_FAIL,
-    USER_APPLY_JOB_REQUEST,
-    USER_APPLY_JOB_RESET,
-    USER_APPLY_JOB_SUCCESS,
+    USER_APPLY_BOOK_FAIL,
+    USER_APPLY_BOOK_REQUEST,
+    USER_APPLY_BOOK_RESET,
+    USER_APPLY_BOOK_SUCCESS,
     USER_LOAD_FAIL,
     USER_LOAD_REQUEST,
     USER_LOAD_RESET,
@@ -104,19 +104,19 @@ export const userReducerLogout = (state = {}, action) => {
 
 }
 
-// apply for a job reducer
-export const userApplyJobReducer = (state = {}, action) => {
+
+export const userApplyBookReducer = (state = {}, action) => {
     switch (action.type) {
-        case USER_APPLY_JOB_REQUEST:
+        case USER_APPLY_BOOK_REQUEST:
             return { loading: true }
-        case USER_APPLY_JOB_SUCCESS:
+        case USER_APPLY_BOOK_SUCCESS:
             return {
                 loading: false,
-                userJob: action.payload,
+                userBook: action.payload,
             }
-        case USER_APPLY_JOB_FAIL:
+        case USER_APPLY_BOOK_FAIL:
             return { loading: false, error: action.payload }
-        case USER_APPLY_JOB_RESET:
+        case USER_APPLY_BOOK_RESET:
             return {}
         default:
             return state;

@@ -29,13 +29,13 @@ const AdminDashboard = () => {
                     <StatComponent
                         value="450"
                         icon={<WorkIcon sx={{ color: "#fafafa", fontSize: 30 }} />}
-                        description="Jobs"
+                        description="Books"
                         money=''
                     />
                     <StatComponent
                         value="6548"
                         icon={<CategoryIcon sx={{ color: "#fafafa", fontSize: 30 }} />}
-                        description="Jobs categories"
+                        description="Books categories"
                         money=''
                     />
 

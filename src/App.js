@@ -12,15 +12,15 @@ import UserDashboard from './pages/user/UserDashboard';
 import UserRoute from './component/UserRoute';
 import AdminRoute from './component/AdminRoute';
 import Layout from './pages/global/Layout';
-import UserJobsHistory from './pages/user/UserJobsHistory';
+import UserBooksHistory from './pages/user/UserBooksHistory';
 import UserInfoDashboard from './pages/user/UserInfoDashboard';
 import AdminDashboard from './pages/admin/AdminDashboard';
-import SingleJob from './pages/SingleJob';
+import SingleBook from './pages/SingleBook';
 import DashUsers from './pages/admin/DashUsers';
-import DashJobs from './pages/admin/DashJobs';
+import DashBooks from './pages/admin/DashBooks';
 import Register from './pages/Register';
 import DashCategory from './pages/admin/DashCategory';
-import DashCreateJob from './pages/admin/DashCreateJob';
+import DashCreateBook from './pages/admin/DashCreateBook';
 import DashCreateCategory from './pages/admin/DashCreateCategory';
 
 
@@ -31,13 +31,13 @@ import { useMemo } from 'react';
 
 //HOC
 const UserDashboardHOC = Layout(UserDashboard);
-const UserJobsHistoryHOC = Layout(UserJobsHistory);
+const UserBooksHistoryHOC = Layout(UserBooksHistory);
 const UserInfoDashboardHOC = Layout(UserInfoDashboard);
 const AdminDashboardHOC = Layout(AdminDashboard);
 const DashUsersHOC = Layout(DashUsers);
-const DashJobsHOC = Layout(DashJobs);
+const DashBooksHOC = Layout(DashBooks);
 const DashCategoryHOC = Layout(DashCategory)
-const DashCreateJobHOC = Layout(DashCreateJob)
+const DashCreateBookHOC = Layout(DashCreateBook)
 const DashCreateCategoryHOC = Layout(DashCreateCategory)
 
 
@@ -61,15 +61,15 @@ const App = () => {
                             <Route path='/search/:keyword' element={<Home />} />
                             <Route path='/login' element={<LogIn />} />
                             <Route path='/register' element={<Register />} />
-                            <Route path='/job/:id' element={<SingleJob />} />
+                            <Route path='/book/:id' element={<SingleBook />} />
                             <Route path='/admin/dashboard' element={<AdminRoute><AdminDashboardHOC /></AdminRoute>} />
                             <Route path='/admin/users' element={<AdminRoute><DashUsersHOC /></AdminRoute>} />
-                            <Route path='/admin/jobs' element={<AdminRoute><DashJobsHOC /></AdminRoute>} />
+                            <Route path='/admin/books' element={<AdminRoute><DashBooksHOC /></AdminRoute>} />
                             <Route path='/admin/category' element={<AdminRoute><DashCategoryHOC /></AdminRoute>} />
-                            <Route path='/admin/job/create' element={<AdminRoute><DashCreateJobHOC /></AdminRoute>} />
+                            <Route path='/admin/book/create' element={<AdminRoute><DashCreateBookHOC /></AdminRoute>} />
                             <Route path='/admin/category/create' element={<AdminRoute><DashCreateCategoryHOC /></AdminRoute>} />
                             <Route path='/user/dashboard' element={<UserRoute>< UserDashboardHOC /></UserRoute>} />
-                            <Route path='/user/jobs' element={<UserRoute>< UserJobsHistoryHOC /></UserRoute>} />
+                            <Route path='/user/books' element={<UserRoute>< UserBooksHistoryHOC /></UserRoute>} />
                             <Route path='/user/info' element={<UserRoute>< UserInfoDashboardHOC /></UserRoute>} />
                             <Route path='*' element={<NotFound />} />
                         </Routes>

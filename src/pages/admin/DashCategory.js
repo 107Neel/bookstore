@@ -4,7 +4,7 @@ import { DataGrid, gridClasses } from '@mui/x-data-grid';
 import { Link } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
 import { useDispatch, useSelector } from 'react-redux';
-import { jobTypeLoadAction } from '../../redux/actions/jobTypeAction';
+import { bookTypeLoadAction } from '../../redux/actions/bookTypeAction';
 
 import moment from 'moment'
 
@@ -15,16 +15,16 @@ const DashCategory = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(jobTypeLoadAction())
+        dispatch(bookTypeLoadAction())
     }, []);
 
 
-    const { jobType, loading } = useSelector(state => state.jobTypeAll);
+    const { bookType, loading } = useSelector(state => state.bookTypeAll);
     let data = [];
-    data = (jobType !== undefined && jobType.length > 0) ? jobType : []
+    data = (bookType !== undefined && bookType.length > 0) ? bookType : []
 
-    //delete job by Id
-    const deleteJobCategoryById = (e, id) => {
+    
+    const deleteBookCategoryById = (e, id) => {
         console.log(id)
     }
 
@@ -37,7 +37,7 @@ const DashCategory = () => {
             editable: true,
         },
         {
-            field: 'jobTypeName',
+            field: 'bookTypeName',
             headerName: 'Category',
             width: 150,
         },
@@ -57,7 +57,7 @@ const DashCategory = () => {
             renderCell: (values) => (
                 <Box sx={{ display: "flex", justifyContent: "space-between", width: "170px" }}>
                     <Button variant="contained"><Link style={{ color: "white", textDecoration: "none" }} to={`/admin/edit/user/${values.row._id}`}>Edit</Link></ Button>
-                    < Button onClick={(e) => deleteJobCategoryById(e, values.row._id)} variant="contained" color="error">Delete</ Button>
+                    < Button onClick={(e) => deleteBookCategoryById(e, values.row._id)} variant="contained" color="error">Delete</ Button>
                 </Box>
             )
         }
@@ -68,7 +68,7 @@ const DashCategory = () => {
         <Box >
 
             <Typography variant="h4" sx={{ color: "white", pb: 3 }}>
-                Jobs category
+                Books category
             </Typography>
             <Box sx={{ pb: 2, display: "flex", justifyContent: "right" }}>
                 <Button variant="contained" color="success" startIcon={<AddIcon />}><Link style={{ color: "white", textDecoration: "none" }} to='/admin/category/create'>Create category</Link></ Button>

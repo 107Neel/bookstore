@@ -1,5 +1,5 @@
 export const data = [
-    ["Year", "Jobs", "Pending", "Approved"],
+    ["Year", "Books", "Pending", "Approved"],
     ["2014", 1000, 400, 200],
     ["2015", 1170, 460, 250],
     ["2016", 660, 1120, 300],
@@ -8,7 +8,7 @@ export const data = [
 
 export const options = {
     chart: {
-        title: "HR Performance",
+        title: "Book HR Performance",
         // subtitle: "Sales, Expenses, and Profit: 2014-2017",
     },
 };

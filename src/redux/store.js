@@ -1,11 +1,11 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from '@redux-devtools/extension';
-import { loadJobReducer, loadJobSingleReducer, registerAjobReducer } from './reducers/jobReducer';
-import { createJobTypeReducer, loadJobTypeReducer } from './reducers/jobTypeReducer';
+import { loadBookReducer, loadBookSingleReducer, registerAbookReducer } from './reducers/bookReducer';
+import { createBookTypeReducer, loadBookTypeReducer } from './reducers/bookTypeReducer';
 import {
     allUserReducer,
-    userApplyJobReducer,
+    userApplyBookReducer,
     userReducerLogout,
     userReducerProfile,
     userReducerSignIn,
@@ -15,18 +15,18 @@ import { modeReducer } from './reducers/themeModeReducer';
 
 //combine reducers
 const reducer = combineReducers({
-    loadJobs: loadJobReducer,
-    jobTypeAll: loadJobTypeReducer,
+    loadBooks: loadBookReducer,
+    bookTypeAll: loadBookTypeReducer,
     signIn: userReducerSignIn,
     logOut: userReducerLogout,
     userProfile: userReducerProfile,
-    singleJob: loadJobSingleReducer,
-    userJobApplication: userApplyJobReducer,
+    singleBook: loadBookSingleReducer,
+    userBookApplication: userApplyBookReducer,
     allUsers: allUserReducer,
     signUp: userReducerSignUp,
     mode: modeReducer,
-    registerJob: registerAjobReducer,
-    createJobType: createJobTypeReducer
+    registerBook: registerAbookReducer,
+    createBookType: createBookTypeReducer
 
 });
 

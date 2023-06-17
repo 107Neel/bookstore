@@ -6,27 +6,27 @@ import { useParams } from 'react-router-dom'
 import Footer from '../component/Footer'
 import LoadingBox from '../component/LoadingBox'
 import Navbar from '../component/Navbar'
-import { jobLoadSingleAction } from '../redux/actions/jobAction'
+import { bookLoadSingleAction } from '../redux/actions/bookAction'
 import Button from '@mui/material/Button'
-import { userApplyJobAction } from '../redux/actions/userAction'
+import { userApplyBookAction } from '../redux/actions/userAction'
 import { useTheme } from '@emotion/react'
 
 
-const SingleJob = () => {
+const SingleBook = () => {
     const { palette } = useTheme();
     const dispatch = useDispatch();
-    const { singleJob, loading } = useSelector(state => state.singleJob)
+    const { singleBook, loading } = useSelector(state => state.singleBook)
     const { id } = useParams();
     useEffect(() => {
-        dispatch(jobLoadSingleAction(id));
+        dispatch(bookLoadSingleAction(id));
     }, [id]);
 
-    const applyForAJob = () => {
-        dispatch(userApplyJobAction({
-            title: singleJob && singleJob.title,
-            description: singleJob && singleJob.description,
-            salary: singleJob && singleJob.salary,
-            location: singleJob && singleJob.location
+    const applyForABook = () => {
+        dispatch(userApplyBookAction({
+            title: singleBook && singleBook.title,
+            description: singleBook && singleBook.description,
+            price: singleBook && singleBook.price,
+            location: singleBook && singleBook.location
         }))
     }
 
@@ -51,20 +51,20 @@ const SingleJob = () => {
                                         <Card sx={{ bgcolor: palette.primary.white }} >
                                             <CardContent>
                                                 <Typography variant="h5" component="h3">
-                                                    {singleJob && singleJob.title}
+                                                    {singleBook && singleBook.title}
                                                 </Typography>
                                                 <Typography variant="body2">
-                                                    <Box component="span" sx={{ fontWeight: 700 }}>Salary</Box>: ${singleJob && singleJob.salary}
+                                                    <Box component="span" sx={{ fontWeight: 700 }}>Price</Box>: ${singleBook && singleBook.price}
                                                 </Typography>
                                                 <Typography variant="body2">
-                                                    <Box component="span" sx={{ fontWeight: 700 }}>Category</Box>: {singleJob && singleJob.jobType ? singleJob.jobType.jobTypeName : "No category"}
+                                                    <Box component="span" sx={{ fontWeight: 700 }}>Category</Box>: {singleBook && singleBook.bookType ? singleBook.bookType.bookTypeName : "No category"}
                                                 </Typography>
                                                 <Typography variant="body2">
-                                                    <Box component="span" sx={{ fontWeight: 700 }}>Location</Box>: {singleJob && singleJob.location}
+                                                    <Box component="span" sx={{ fontWeight: 700 }}>Location</Box>: {singleBook && singleBook.location}
                                                 </Typography>
                                                 <Typography variant="body2" sx={{ pt: 2 }}>
-                                                    {/* <h3>Job description:</h3> */}
-                                                    {singleJob && singleJob.description}
+                                                    
+                                                    {singleBook && singleBook.description}
                                                 </Typography>
                                             </CardContent>
                                         </Card>
@@ -72,7 +72,7 @@ const SingleJob = () => {
                             </Box>
                             <Box sx={{ flex: 1, p: 2 }}>
                                 <Card sx={{ p: 2, bgcolor: palette.primary.white }}>
-                                    <Button onClick={applyForAJob} sx={{ fontSize: "13px" }} variant='contained'>Applied for this Job</Button>
+                                    <Button onClick={applyForABook} sx={{ fontSize: "13px" }} variant='contained'>Applied for this Book</Button>
                                 </Card>
                             </Box>
 
@@ -86,4 +86,4 @@ const SingleJob = () => {
     )
 }
 
-export default SingleJob
+export default SingleBook

@@ -9,7 +9,7 @@ import { useTheme } from '@emotion/react';
 
 const SelectComponent = ({ handleChangeCategory, cat }) => {
 
-    const { jobType } = useSelector(state => state.jobTypeAll);
+    const { bookType } = useSelector(state => state.bookTypeAll);
     const { palette } = useTheme();
 
     return (
@@ -34,8 +34,8 @@ const SelectComponent = ({ handleChangeCategory, cat }) => {
                 >
                     <MenuItem value="">All</MenuItem>
                     {
-                        jobType && jobType.map(jt => (
-                            <MenuItem key={jt._id} value={jt._id}>{jt.jobTypeName}</MenuItem>
+                        bookType && bookType.map(jt => (
+                            <MenuItem key={jt._id} value={jt._id}>{jt.bookTypeName}</MenuItem>
                         ))
                     }
 

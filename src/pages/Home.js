@@ -3,19 +3,19 @@ import Navbar from '../component/Navbar'
 import Header from '../component/Header'
 import { Box, Card, Container, ListItemIcon, MenuItem, MenuList, Pagination, Stack, Typography, useTheme } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
-import { jobLoadAction } from '../redux/actions/jobAction'
+import { bookLoadAction } from '../redux/actions/bookAction'
 import { Link, useParams } from 'react-router-dom'
 import CardElement from '../component/CardElement'
 import Footer from '../component/Footer'
 import LoadingBox from '../component/LoadingBox'
 import SelectComponent from '../component/SelectComponent'
-import { jobTypeLoadAction } from '../redux/actions/jobTypeAction'
+import { bookTypeLoadAction } from '../redux/actions/bookTypeAction'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 
 
 const Home = () => {
-    const { jobs, setUniqueLocation, pages, loading } = useSelector(state => state.loadJobs);
+    const { books, setUniqueLocation, pages, loading } = useSelector(state => state.loadBooks);
 
     const { palette } = useTheme();
     const dispatch = useDispatch();
@@ -25,11 +25,11 @@ const Home = () => {
     const [cat, setCat] = React.useState('');
 
     useEffect(() => {
-        dispatch(jobLoadAction(page, keyword, cat, location));
+        dispatch(bookLoadAction(page, keyword, cat, location));
     }, [page, keyword, cat, location]);
 
     useEffect(() => {
-        dispatch(jobTypeLoadAction());
+        dispatch(bookTypeLoadAction());
     }, []);
 
     const handleChangeCategory = (e) => {
@@ -51,19 +51,19 @@ const Home = () => {
                             <Card sx={{ minWidth: 150, mb: 3, mt: 3, p: 2, bgcolor: palette.primary.white }}>
                                 <Box sx={{ pb: 2 }}>
                                     <Typography component="h4" sx={{ color: palette.secondary.main, fontWeight: 600 }}>
-                                        Filter job by category
+                                        Filter book by category
                                     </Typography>
                                 </Box>
                                 <SelectComponent handleChangeCategory={handleChangeCategory} cat={cat} />
 
                             </Card>
 
-                            {/* jobs by location */}
+                     
                             <Card sx={{ minWidth: 150, mb: 3, mt: 3, p: 2, bgcolor: palette.primary.white }}>
                                 <Box sx={{ pb: 2 }}>
                                     {/* <h4>Filter by category</h4> */}
                                     <Typography component="h4" sx={{ color: palette.secondary.main, fontWeight: 600 }}>
-                                        Filter job by location
+                                        Filter book by location
                                     </Typography>
                                     <MenuList>
                                         {
@@ -87,7 +87,7 @@ const Home = () => {
                             {
                                 loading ?
                                     <LoadingBox /> :
-                                    jobs && jobs.length === 0 ?
+                                    books && books.length === 0 ?
                                         <>
                                             <Box
                                                 sx={{
@@ -102,14 +102,14 @@ const Home = () => {
                                         </> :
 
 
-                                        jobs && jobs.map((job, i) => (
+                                        books && books.map((book, i) => (
                                             <CardElement
                                                 key={i}
-                                                id={job._id}
-                                                jobTitle={job.title}
-                                                description={job.description}
-                                                category={job.jobType ? job.jobType.jobTypeName : "No category"}
-                                                location={job.location}
+                                                id={book._id}
+                                                bookTitle={book.title}
+                                                description={book.description}
+                                                category={book.bookType ? book.bookType.bookTypeName : "No category"}
+                                                location={book.location}
                                             />
                                         ))
                             }

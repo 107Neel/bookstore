@@ -5,21 +5,21 @@ import { useSelector } from 'react-redux'
 import CardElement from '../../component/CardElement'
 
 
-const UserJobsHistory = () => {
+const UserBooksHistory = () => {
     const { user } = useSelector(state => state.userProfile);
 
 
     return (
         <>
             <Box>
-                <Typography variant="h4" sx={{ color: "#fafafa" }}> Jobs History</Typography>
+                <Typography variant="h4" sx={{ color: "#fafafa" }}> Books History</Typography>
                 <Box>
                     {
-                        user && user.jobsHistory.map((history, i) => (
+                        user && user.booksHistory.map((history, i) => (
                             <CardElement
                                 key={i}
                                 id={history._id}
-                                jobTitle={history.title}
+                                bookTitle={history.title}
                                 description={history.description}
                                 category=''
                                 location={history.location}
@@ -32,4 +32,4 @@ const UserJobsHistory = () => {
     )
 }
 
-export default UserJobsHistory
+export default UserBooksHistory

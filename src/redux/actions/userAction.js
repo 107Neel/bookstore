@@ -4,9 +4,9 @@ import {
     ALL_USER_LOAD_FAIL,
     ALL_USER_LOAD_REQUEST,
     ALL_USER_LOAD_SUCCESS,
-    USER_APPLY_JOB_FAIL,
-    USER_APPLY_JOB_REQUEST,
-    USER_APPLY_JOB_SUCCESS,
+    USER_APPLY_BOOK_FAIL,
+    USER_APPLY_BOOK_REQUEST,
+    USER_APPLY_BOOK_SUCCESS,
     USER_LOAD_FAIL,
     USER_LOAD_REQUEST,
     USER_LOAD_SUCCESS,
@@ -120,20 +120,20 @@ export const allUserAction = () => async (dispatch) => {
     }
 }
 
-//user job apply action
-export const userApplyJobAction = (job) => async (dispatch) => {
-    dispatch({ type: USER_APPLY_JOB_REQUEST });
+
+export const userApplyBookAction = (book) => async (dispatch) => {
+    dispatch({ type: USER_APPLY_BOOK_REQUEST });
     try {
-        const { data } = await axios.post("/api/user/jobhistory", job);
+        const { data } = await axios.post("/api/user/bookhistory", book);
 
         dispatch({
-            type: USER_APPLY_JOB_SUCCESS,
+            type: USER_APPLY_BOOK_SUCCESS,
             payload: data
         });
-        toast.success("Apply Successfully for this Job!");
+        toast.success("Apply Successfully for this Book!");
     } catch (error) {
         dispatch({
-            type: USER_APPLY_JOB_FAIL,
+            type: USER_APPLY_BOOK_FAIL,
             payload: error.response.data.error
         });
         toast.error(error.response.data.error);

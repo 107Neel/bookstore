@@ -4,27 +4,27 @@ import { DataGrid, gridClasses } from '@mui/x-data-grid';
 import { Link } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
 import { useDispatch, useSelector } from 'react-redux';
-import { jobLoadAction } from '../../redux/actions/jobAction';
+import { bookLoadAction } from '../../redux/actions/bookAction';
 
 
 
-const DashJobs = () => {
+const DashBooks = () => {
 
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(jobLoadAction())
+        dispatch(bookLoadAction())
     }, []);
 
 
-    const { jobs, loading } = useSelector(state => state.loadJobs);
+    const { books, loading } = useSelector(state => state.loadBooks);
     let data = [];
-    data = (jobs !== undefined && jobs.length > 0) ? jobs : []
+    data = (books !== undefined && books.length > 0) ? books : []
 
 
-    //delete job by Id
-    const deleteJobById = (e, id) => {
+   
+    const deleteBookById = (e, id) => {
         console.log(id)
     }
 
@@ -32,20 +32,20 @@ const DashJobs = () => {
 
         {
             field: '_id',
-            headerName: 'Job ID',
+            headerName: 'Book ID',
             width: 150,
             editable: true,
         },
         {
             field: 'title',
-            headerName: 'Job name',
+            headerName: 'Book name',
             width: 150,
         },
         {
-            field: 'jobType',
+            field: 'bookType',
             headerName: 'Category',
             width: 150,
-            valueGetter: (data) => data.row.jobType.jobTypeName
+            valueGetter: (data) => data.row.bookType.bookTypeName
         },
         {
             field: 'user',
@@ -64,12 +64,12 @@ const DashJobs = () => {
         },
 
         {
-            field: 'salary',
-            headerName: 'Salary',
+            field: 'price',
+            headerName: 'price',
             type: Number,
             width: 150,
             renderCell: (values => (
-                "$" + values.row.salary
+                "$" + values.row.price
             ))
 
         },
@@ -79,8 +79,8 @@ const DashJobs = () => {
             width: 200,
             renderCell: (values) => (
                 <Box sx={{ display: "flex", justifyContent: "space-between", width: "170px" }}>
-                    <Button variant="contained"><Link style={{ color: "white", textDecoration: "none" }} to={`/admin/edit/job/${values.row._id}`}>Edit</Link></ Button>
-                    < Button onClick={(e) => deleteJobById(e, values.row._id)} variant="contained" color="error">Delete</ Button>
+                    <Button variant="contained"><Link style={{ color: "white", textDecoration: "none" }} to={`/admin/edit/book/${values.row._id}`}>Edit</Link></ Button>
+                    < Button onClick={(e) => deleteBookById(e, values.row._id)} variant="contained" color="error">Delete</ Button>
                 </Box>
             )
         }
@@ -91,10 +91,10 @@ const DashJobs = () => {
         <Box >
 
             <Typography variant="h4" sx={{ color: "white", pb: 3 }}>
-                Jobs list
+                Books list
             </Typography>
             <Box sx={{ pb: 2, display: "flex", justifyContent: "right" }}>
-                <Button variant='contained' color="success" startIcon={<AddIcon />}> <Link style={{ color: "white", textDecoration: "none" }} to="/admin/job/create">Create Job</Link></Button>
+                <Button variant='contained' color="success" startIcon={<AddIcon />}> <Link style={{ color: "white", textDecoration: "none" }} to="/admin/book/create">Create Book</Link></Button>
             </Box>
             <Paper sx={{ bgcolor: "secondary.midNightBlue" }} >
 
@@ -130,4 +130,4 @@ const DashJobs = () => {
     )
 }
 
-export default DashJobs
+export default DashBooks

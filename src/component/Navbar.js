@@ -11,7 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import WorkIcon from '@mui/icons-material/Work';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTheme } from '@emotion/react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -64,7 +64,7 @@ const Navbar = () => {
             <Container >
                 {/* principal Menu */}
                 <Toolbar disableGutters>
-                    <WorkIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                    <MenuBookIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                     <Typography
                         variant="h6"
                         noWrap
@@ -80,7 +80,7 @@ const Navbar = () => {
                             textDecoration: 'none',
                         }}
                     >
-                        JOB PORTAL
+                        BOOK STORE
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -119,7 +119,7 @@ const Navbar = () => {
                             ))}
                         </Menu>
                     </Box>
-                    <WorkIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                    <MenuBookIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                     <Typography
                         variant="h6"
                         noWrap
@@ -136,7 +136,7 @@ const Navbar = () => {
                             textDecoration: 'none',
                         }}
                     >
-                        JOB PORTAL
+                        BOOK STORE
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {/* menu desktop */}

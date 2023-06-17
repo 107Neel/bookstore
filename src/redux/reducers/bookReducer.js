@@ -1,24 +1,24 @@
 import {
-    JOB_LOAD_FAIL,
-    JOB_LOAD_REQUEST,
-    JOB_LOAD_RESET,
-    JOB_LOAD_SINGLE_FAIL,
-    JOB_LOAD_SINGLE_REQUEST,
-    JOB_LOAD_SINGLE_RESET,
-    JOB_LOAD_SINGLE_SUCCESS,
-    JOB_LOAD_SUCCESS,
-    REGISTER_JOB_FAIL,
-    REGISTER_JOB_REQUEST,
-    REGISTER_JOB_RESET,
-    REGISTER_JOB_SUCCESS
-} from "../constants/jobconstant"
+    BOOK_LOAD_FAIL,
+    BOOK_LOAD_REQUEST,
+    BOOK_LOAD_RESET,
+    BOOK_LOAD_SINGLE_FAIL,
+    BOOK_LOAD_SINGLE_REQUEST,
+    BOOK_LOAD_SINGLE_RESET,
+    BOOK_LOAD_SINGLE_SUCCESS,
+    BOOK_LOAD_SUCCESS,
+    REGISTER_BOOK_FAIL,
+    REGISTER_BOOK_REQUEST,
+    REGISTER_BOOK_RESET,
+    REGISTER_BOOK_SUCCESS
+} from "../constants/bookconstant"
 
 
-export const loadJobReducer = (state = { jobs: [] }, action) => {
+export const loadBookReducer = (state = { books: [] }, action) => {
     switch (action.type) {
-        case JOB_LOAD_REQUEST:
+        case BOOK_LOAD_REQUEST:
             return { loading: true }
-        case JOB_LOAD_SUCCESS:
+        case BOOK_LOAD_SUCCESS:
             return {
                 loading: false,
                 success: action.payload.success,
@@ -26,36 +26,36 @@ export const loadJobReducer = (state = { jobs: [] }, action) => {
                 pages: action.payload.pages,
                 count: action.payload.count,
                 setUniqueLocation: action.payload.setUniqueLocation,
-                jobs: action.payload.jobs
+                books: action.payload.books
             }
-        case JOB_LOAD_FAIL:
+        case BOOK_LOAD_FAIL:
             return {
                 loading: false,
                 error: action.payload
             }
-        case JOB_LOAD_RESET:
+        case BOOK_LOAD_RESET:
             return {}
         default:
             return state;
     }
 }
 
-// single job reducer
-export const loadJobSingleReducer = (state = { job: {} }, action) => {
+
+export const loadBookSingleReducer = (state = { book: {} }, action) => {
     switch (action.type) {
-        case JOB_LOAD_SINGLE_REQUEST:
+        case BOOK_LOAD_SINGLE_REQUEST:
             return { loading: true }
-        case JOB_LOAD_SINGLE_SUCCESS:
+        case BOOK_LOAD_SINGLE_SUCCESS:
             return {
 
                 loading: false,
                 success: action.payload.success,
-                singleJob: action.payload.job,
+                singleBook: action.payload.book,
 
             }
-        case JOB_LOAD_SINGLE_FAIL:
+        case BOOK_LOAD_SINGLE_FAIL:
             return { loading: false, error: action.payload }
-        case JOB_LOAD_SINGLE_RESET:
+        case BOOK_LOAD_SINGLE_RESET:
             return {}
         default:
             return state;
@@ -63,19 +63,19 @@ export const loadJobSingleReducer = (state = { job: {} }, action) => {
 
 }
 
-//Registred job;
-export const registerAjobReducer = (state = {}, action) => {
+
+export const registerAbookReducer = (state = {}, action) => {
     switch (action.type) {
-        case REGISTER_JOB_REQUEST:
+        case REGISTER_BOOK_REQUEST:
             return { loading: true }
-        case REGISTER_JOB_SUCCESS:
+        case REGISTER_BOOK_SUCCESS:
             return {
                 loading: false,
-                job: action.payload,
+                book: action.payload,
             }
-        case REGISTER_JOB_FAIL:
+        case REGISTER_BOOK_FAIL:
             return { loading: false, error: action.payload }
-        case REGISTER_JOB_RESET:
+        case REGISTER_BOOK_RESET:
             return {}
         default:
             return state;

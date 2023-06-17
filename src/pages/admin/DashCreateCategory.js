@@ -4,13 +4,13 @@ import Button from '@mui/material/Button';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux'
-import { createJobTypeAction } from '../../redux/actions/jobTypeAction';
+import { createBookTypeAction } from '../../redux/actions/bookTypeAction';
 
 
 
 const validationSchema = yup.object({
 
-    jobTypeName: yup
+    bookTypeName: yup
         .string('Enter a Category')
         .required('Category is required'),
 });
@@ -24,11 +24,11 @@ const DashCreateCategory = () => {
     const formik = useFormik({
         initialValues: {
             user: user && user._id,
-            jobTypeName: ''
+            bookTypeName: ''
         },
         validationSchema: validationSchema,
         onSubmit: (values, actions) => {
-            dispatch(createJobTypeAction(values))
+            dispatch(createBookTypeAction(values))
             //alert(JSON.stringify(values, null, 2));
             actions.resetForm();
         },
@@ -48,18 +48,18 @@ const DashCreateCategory = () => {
                         </Typography>
                         <TextField sx={{ mb: 3 }}
                             fullWidth
-                            id="jobTypeName"
+                            id="bookTypeName"
                             label="category"
-                            name='jobTypeName'
+                            name='bookTypeName'
                             InputLabelProps={{
                                 shrink: true,
                             }}
                             placeholder="category name"
-                            value={formik.values.jobTypeName}
+                            value={formik.values.bookTypeName}
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
-                            error={formik.touched.jobTypeName && Boolean(formik.errors.jobTypeName)}
-                            helperText={formik.touched.jobTypeName && formik.errors.jobTypeName}
+                            error={formik.touched.bookTypeName && Boolean(formik.errors.bookTypeName)}
+                            helperText={formik.touched.bookTypeName && formik.errors.bookTypeName}
                         />
 
 
